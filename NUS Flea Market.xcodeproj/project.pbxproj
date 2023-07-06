@@ -7,18 +7,42 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10CD759F2A56CA6600ACB14C /* Tabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD759E2A56CA6600ACB14C /* Tabs.swift */; };
+		10CD75A12A56E13100ACB14C /* itemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A02A56E13100ACB14C /* itemDetail.swift */; };
+		10CD75A52A56F65D00ACB14C /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A42A56F65D00ACB14C /* Trail.swift */; };
+		10CD75A72A5708ED00ACB14C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A62A5708ED00ACB14C /* SearchView.swift */; };
 		10D35C1A2A48AAD90038D73A /* NUS_Flea_MarketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C192A48AAD90038D73A /* NUS_Flea_MarketApp.swift */; };
 		10D35C1C2A48AAD90038D73A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C1B2A48AAD90038D73A /* ContentView.swift */; };
 		10D35C1E2A48AADF0038D73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D35C1D2A48AADF0038D73A /* Assets.xcassets */; };
 		10D35C212A48AADF0038D73A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D35C202A48AADF0038D73A /* Preview Assets.xcassets */; };
+		10D35C2A2A48ABCB0038D73A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C292A48ABCB0038D73A /* SettingsView.swift */; };
+		10D35C2C2A48AC470038D73A /* AddItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C2B2A48AC470038D73A /* AddItemsView.swift */; };
+		10D35C2E2A48AC6E0038D73A /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C2D2A48AC6E0038D73A /* ProductRow.swift */; };
+		10D35C302A48AC8B0038D73A /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C2F2A48AC8B0038D73A /* Card.swift */; };
+		10D35C322A48ACA30038D73A /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C312A48ACA30038D73A /* CartButton.swift */; };
+		10D35C342A48ACBE0038D73A /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C332A48ACBE0038D73A /* CartView.swift */; };
+		10D35C362A48ACDB0038D73A /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C352A48ACDB0038D73A /* CartManager.swift */; };
+		10D35C382A48ACF00038D73A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C372A48ACF00038D73A /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10CD759E2A56CA6600ACB14C /* Tabs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabs.swift; sourceTree = "<group>"; };
+		10CD75A02A56E13100ACB14C /* itemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemDetail.swift; sourceTree = "<group>"; };
+		10CD75A42A56F65D00ACB14C /* Trail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
+		10CD75A62A5708ED00ACB14C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		10D35C162A48AAD90038D73A /* NUS Flea Market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NUS Flea Market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D35C192A48AAD90038D73A /* NUS_Flea_MarketApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NUS_Flea_MarketApp.swift; sourceTree = "<group>"; };
 		10D35C1B2A48AAD90038D73A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		10D35C1D2A48AADF0038D73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10D35C202A48AADF0038D73A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		10D35C292A48ABCB0038D73A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		10D35C2B2A48AC470038D73A /* AddItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemsView.swift; sourceTree = "<group>"; };
+		10D35C2D2A48AC6E0038D73A /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
+		10D35C2F2A48AC8B0038D73A /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		10D35C312A48ACA30038D73A /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
+		10D35C332A48ACBE0038D73A /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		10D35C352A48ACDB0038D73A /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		10D35C372A48ACF00038D73A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +76,19 @@
 			isa = PBXGroup;
 			children = (
 				10D35C192A48AAD90038D73A /* NUS_Flea_MarketApp.swift */,
+				10D35C292A48ABCB0038D73A /* SettingsView.swift */,
 				10D35C1B2A48AAD90038D73A /* ContentView.swift */,
+				10D35C372A48ACF00038D73A /* Product.swift */,
+				10D35C2B2A48AC470038D73A /* AddItemsView.swift */,
+				10D35C2D2A48AC6E0038D73A /* ProductRow.swift */,
+				10D35C2F2A48AC8B0038D73A /* Card.swift */,
+				10CD75A02A56E13100ACB14C /* itemDetail.swift */,
+				10D35C312A48ACA30038D73A /* CartButton.swift */,
+				10D35C332A48ACBE0038D73A /* CartView.swift */,
+				10D35C352A48ACDB0038D73A /* CartManager.swift */,
+				10CD75A62A5708ED00ACB14C /* SearchView.swift */,
+				10CD759E2A56CA6600ACB14C /* Tabs.swift */,
+				10CD75A42A56F65D00ACB14C /* Trail.swift */,
 				10D35C1D2A48AADF0038D73A /* Assets.xcassets */,
 				10D35C1F2A48AADF0038D73A /* Preview Content */,
 			);
@@ -137,8 +173,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D35C2A2A48ABCB0038D73A /* SettingsView.swift in Sources */,
+				10D35C362A48ACDB0038D73A /* CartManager.swift in Sources */,
+				10D35C302A48AC8B0038D73A /* Card.swift in Sources */,
 				10D35C1C2A48AAD90038D73A /* ContentView.swift in Sources */,
+				10CD75A52A56F65D00ACB14C /* Trail.swift in Sources */,
+				10D35C2E2A48AC6E0038D73A /* ProductRow.swift in Sources */,
+				10CD75A12A56E13100ACB14C /* itemDetail.swift in Sources */,
 				10D35C1A2A48AAD90038D73A /* NUS_Flea_MarketApp.swift in Sources */,
+				10D35C322A48ACA30038D73A /* CartButton.swift in Sources */,
+				10D35C382A48ACF00038D73A /* Product.swift in Sources */,
+				10CD75A72A5708ED00ACB14C /* SearchView.swift in Sources */,
+				10D35C342A48ACBE0038D73A /* CartView.swift in Sources */,
+				10D35C2C2A48AC470038D73A /* AddItemsView.swift in Sources */,
+				10CD759F2A56CA6600ACB14C /* Tabs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
