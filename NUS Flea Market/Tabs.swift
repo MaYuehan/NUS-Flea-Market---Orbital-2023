@@ -35,7 +35,7 @@ struct Tabs: View {
             
             Text("profile")
                 .tabItem{
-                    Image(systemName: "person.fill")
+                    Image(systemName: "magnifyingglass.circle.fill")
                     Text("Profile")
                 }
             

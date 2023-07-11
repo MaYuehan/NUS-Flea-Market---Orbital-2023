@@ -28,8 +28,10 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle(Text("NUS Flea Market"))
+            
             .toolbar {
-                ToolbarItem {
+
+                ToolbarItem(placement: .navigationBarLeading)  {
                     Button(action: {
                         showSettingsView = true
                     }) {
@@ -39,12 +41,24 @@ struct ContentView: View {
                             .frame(width: 60, height: 60)
                     }
                 }
-
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SearchView()) {
+                        Image(systemName: "magnifyingglass.circle.fill")
+                            .resizable()
+                            .foregroundColor(.purple)
+                            .padding()
+                            .frame(width: 60, height: 60)
+                    }
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: CartView().environmentObject(cartManager)) {
                         CartButton(numberOfProducts: cartManager.products.count)
                     }
                 }
+                
+                
 
 
             }

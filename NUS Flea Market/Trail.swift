@@ -12,6 +12,7 @@ struct Trail: View {
     @State var col = Color.red
     var body: some View {
         
+        
         Button{
             col = Color.white
             
