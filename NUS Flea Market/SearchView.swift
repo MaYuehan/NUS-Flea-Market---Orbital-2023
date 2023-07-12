@@ -37,7 +37,7 @@ struct SearchView: View {
                     NavigationLink{
                              CategoryStationery()
                     }label:{
-                        Text("Stationery")
+                        Text("Stationeries")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
@@ -64,7 +64,7 @@ struct SearchView: View {
                     NavigationLink{
                              CategoryElectrical()
                     }label:{
-                        Text("Electrical")
+                        Text("Electronics")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)

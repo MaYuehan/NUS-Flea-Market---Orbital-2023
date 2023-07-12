@@ -7,16 +7,18 @@ struct AddItemsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var productList: [Product]
+    
     @State private var name = ""
     @State private var price = ""
     @State private var contact = ""
     @State private var description = ""
     @State private var image: UIImage?
     @State private var showImagePicker = false
-    @State private var selection: String = ""
+    @State private var category: String = ""
+    
     
     let categories: [String] = [
-    "Books", "Stationery", "Furnitures","Electrical","Clothes","Daily Use", "Other"]
+    "Book", "Stationery", "Furniture","Electronic","Clothes","Daily Use", "Other"]
     
     
     var body: some View {
@@ -30,10 +32,10 @@ struct AddItemsView: View {
                     
                     
                     Picker(
-                    selection: $selection,
+                    selection: $category,
                     label: HStack{
                         Text ("Category:")
-                        Text(selection)
+                        Text(category)
                     },
                 content: {
                     ForEach (categories, id: \.self) { option in
@@ -93,7 +95,7 @@ struct AddItemsView: View {
         }
 
         
-        let newItem = Product(name: name, image: image, price: price, contact: contact, description: description)
+        let newItem = Product(name: name, image: image, price: price, contact: contact, description: description, category: category)
         productList.append(newItem)
         
         presentationMode.wrappedValue.dismiss()

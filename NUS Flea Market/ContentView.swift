@@ -6,9 +6,10 @@ struct ContentView: View {
     
     @StateObject var cartManager = CartManager()
     
+    
     @State var productList: [Product] = [
-        Product(name: "AirPods", image: UIImage(named: "1"), price: 200, contact: "12345", description:"Bought in 2021, mild wear"),
-        Product(name: "Laptop", image: UIImage(named: "2"), price: 900, contact: "12334", description:"Bought in 2020, 13inch MacBook Pro, gray")
+        Product(name: "AirPods", image: UIImage(named: "1"), price: 200, contact: "12345", description:"Bought in 2021, mild wear", category: "Electronic"),
+        Product(name: "Laptop", image: UIImage(named: "2"), price: 900, contact: "12334", description:"Bought in 2020, 13inch MacBook Pro, gray", category: "Electronic")
     ]
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]

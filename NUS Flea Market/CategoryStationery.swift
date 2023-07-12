@@ -11,8 +11,8 @@ struct CategoryStationery: View {
     @StateObject var cartManager = CartManager()
     
     @State var productList: [Product] = [
-        Product(name: "NoteBook", image: UIImage(named: "1"), price: 10, contact: "12345", description:"150 pages, brown cover, A4"),
-        Product(name: "Pen", image: UIImage(named: "2"), price: 1, contact: "12334", description:"black polit pen, orginal price 3.5")
+        Product(name: "NoteBook", image: UIImage(named: "1"), price: 10, contact: "12345", description:"150 pages, brown cover, A4", category: "Stationery"),
+        Product(name: "Pen", image: UIImage(named: "2"), price: 1, contact: "12334", description:"black polit pen, orginal price 3.5", category: "Stationery")
     ]
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
@@ -31,7 +31,7 @@ struct CategoryStationery: View {
                 }
                 .padding()
             }
-            .navigationTitle(Text("Stationery"))
+            .navigationTitle(Text("Stationeries"))
             
             .toolbar {
 

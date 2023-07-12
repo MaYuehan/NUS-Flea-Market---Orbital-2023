@@ -11,8 +11,8 @@ struct CategoryElectrical: View {
     @StateObject var cartManager = CartManager()
     
     @State var productList: [Product] = [
-        Product(name: "Aircon", image: UIImage(named: "1"), price: 140, contact: "12345", description:"Bought in 2021,white, 50*40*60"),
-        Product(name: "Laptop", image: UIImage(named: "2"), price: 800, contact: "12334", description:"Bought in 2022, light gray, 13inch")
+        Product(name: "Phone", image: UIImage(named: "1"), price: 800, contact: "12345", description:"Bought in 2021,white, iphone12", category: "Electronic"),
+        Product(name: "Laptop", image: UIImage(named: "2"), price: 800, contact: "12334", description:"Bought in 2022, light gray, 13inch", category: "Electronic")
     ]
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
@@ -31,7 +31,7 @@ struct CategoryElectrical: View {
                 }
                 .padding()
             }
-            .navigationTitle(Text("Electrical"))
+            .navigationTitle(Text("Electronics"))
             
             .toolbar {
                 

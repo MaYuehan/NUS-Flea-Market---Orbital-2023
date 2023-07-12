@@ -39,16 +39,38 @@ struct itemDetail: View {
                         .frame(width:320,alignment: .leading)
                         .padding()
 
-                    Text("Price")
-                        .fontWeight(.bold)
-                        .font(.caption)
-                        .foregroundColor(.purple)
-                        .frame(width:320,alignment: .leading)
+                    HStack{
                         
-                    Text("\(product.price)$")
-                        .fontWeight(.semibold)
-                        .font(.title3)
-                        .frame(width:320,alignment: .leading)
+                        VStack{
+                            Text("Price")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                                .foregroundColor(.purple)
+                                .frame(width:150,alignment: .leading)
+                            
+                            Text("\(product.price)$")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                                .frame(width:150,alignment: .leading)
+                        }
+                        
+                        VStack{
+                            Text("Category")
+                                .fontWeight(.bold)
+                                .font(.caption)
+                                .foregroundColor(.purple)
+                                .frame(width:150,alignment: .trailing)
+                            
+                            Text(product.category)
+                                .fontWeight(.semibold)
+                                .font(.callout)
+                                .frame(width:150,alignment: .trailing)
+                        }
+                        
+                    }
+                    
+                    
+                        
                        
 
                     Color.white

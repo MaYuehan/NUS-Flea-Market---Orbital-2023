@@ -11,8 +11,8 @@ struct CategoryDailyUse: View {
     @StateObject var cartManager = CartManager()
     
     @State var productList: [Product] = [
-        Product(name: "Face wash", image: UIImage(named: "1"), price: 15, contact: "12345", description:"new fach wash, not used, original price 35$"),
-        Product(name: "Typo Mug", image: UIImage(named: "2"), price: 8, contact: "12334", description:"TYPO mug, light yellow, original price 15, not used")
+        Product(name: "Face wash", image: UIImage(named: "1"), price: 15, contact: "12345", description:"new fach wash, not used, original price 35$", category: "Daily Use"),
+        Product(name: "Typo Mug", image: UIImage(named: "2"), price: 8, contact: "12334", description:"TYPO mug, light yellow, original price 15, not used", category: "Daily Use")
     ]
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]

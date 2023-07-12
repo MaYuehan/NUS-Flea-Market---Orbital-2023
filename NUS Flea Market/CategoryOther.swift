@@ -11,7 +11,7 @@ struct CategoryOther: View {
     @StateObject var cartManager = CartManager()
     
     @State var productList: [Product] = [
-        Product(name: "NUS badge", image: UIImage(named: "1"), price: 8, contact: "12345", description:"new badge, not used, original price 15$"),
+        Product(name: "NUS badge", image: UIImage(named: "1"), price: 8, contact: "12345", description:"new badge, not used, original price 15$", category: "Other"),
         
     ]
     
