@@ -3,29 +3,42 @@ import SwiftUI
 struct ProductRow: View {
     @EnvironmentObject var cartManager: CartManager
     var product: Product
+    @State private var showItemDetail = false
     
     var body: some View {
         HStack(spacing: 20) {
             
-            if let image = product.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 50)
-                    .cornerRadius(10)
-            } else {
-                Color.purple
-                    .frame(width: 50)
-                    .cornerRadius(10)
+            
+            Button {
+                showItemDetail = true
+                
+            } label: {
+                HStack{
+                if let image = product.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 50)
+                        .cornerRadius(10)
+                } else {
+                    Color.purple
+                        .frame(width: 50)
+                        .cornerRadius(10)
+                }
+                
+                
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(product.name)
+                            .bold()
+                            .foregroundColor(.purple)
+                        
+                        Text("$\(product.price)")
+                            .foregroundColor(.purple)
+                    }
+                }
             }
             
-     
-            VStack(alignment: .leading, spacing: 10) {
-                Text(product.name)
-                    .bold()
-
-                Text("$\(product.price)")
-            }
+            
             
             Spacer()
 
@@ -37,8 +50,13 @@ struct ProductRow: View {
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .sheet(isPresented: $showItemDetail) {
+            itemDetail(product: product)
+                .environmentObject(cartManager)
+        }
         
     }
+    
 }
 
 struct ProductRow_Previews: PreviewProvider {

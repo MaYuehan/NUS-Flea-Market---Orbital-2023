@@ -21,80 +21,97 @@ struct SearchView: View {
             
                 ScrollView{
                     
-                    
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryBooks()
+                    }label:{
                         Text("Books")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
+                    }
+                    .padding()
                     
                     
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryStationery()
+                    }label:{
                         Text("Stationery")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
+                    }
+                    .padding()
                     
                     
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryFurnitures()
+                    }label:{
                         Text("Furnitures")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
+                    }
+                    .padding()
+
+                   
                     
-                    
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryElectrical()
+                    }label:{
                         Text("Electrical")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
+                    }
+                    .padding()
                     
                     
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryClothes()
+                    }label:{
+                        Text("Clothes")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .frame(width: 350, height: 100)
+                            .background(Color.purple)
+                            .cornerRadius(20)
+                    }
+                    .padding()
+                   
+                    NavigationLink{
+                             CategoryDailyUse()
+                    }label:{
                         Text("Daily use")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
+                    }
+                    .padding()
+                   
                     
                     
-                    Button{
-                        //action
-                    }label: {
+                    NavigationLink{
+                             CategoryOther()
+                    }label:{
                         Text("Other")
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(width: 350, height: 100)
                             .background(Color.purple)
                             .cornerRadius(20)
-                    }.padding()
-                    
-                    
-                    
+                    }
+                    .padding()
+                
                     
                 }
                   

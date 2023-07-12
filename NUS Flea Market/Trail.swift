@@ -9,30 +9,23 @@ import SwiftUI
 
 struct Trail: View {
     
-    @State var col = Color.red
+    @State var selection: String = "Books"
+    let categories: [String] = [
+    "Books", "Stationery", "Furnitures","Electrical","Clothes","Daily Use", "Other"]
+    
     var body: some View {
         
-        
-        Button{
-            col = Color.white
-            
-        }label: {
-            VStack(alignment: .leading) {
-                Text("name")
-                    .foregroundColor(col)
-                    .bold()
-
-                Text("price")
-                    .foregroundColor(col)
-                    .font(.caption)
-            }
-            .padding()
-            .frame(width: 180, alignment: .leading)
-            .background(.purple)
-            .cornerRadius(20)
+        Picker(
+        selection: $selection,
+        label: Text ("Picker"),
+    content: {
+        ForEach (categories, id: \.self) { option in
+            Text(option)
+                .tag (option)
         }
-        
-        
+    }
+        )
+
     }
 }
 
