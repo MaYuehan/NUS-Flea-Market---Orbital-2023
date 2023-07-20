@@ -1,4 +1,3 @@
-
 import SwiftUI
 import UIKit
 
@@ -14,12 +13,13 @@ struct AddItemsView: View {
     @State private var description = ""
     @State private var image: UIImage?
     @State private var showImagePicker = false
-    @State private var category: String = ""
     
+    // Replace the category variable with an Int representing the index of the selected category
+    @State private var categoryIndex = 0
     
     let categories: [String] = [
-    "Book", "Stationery", "Furniture","Electronic","Clothes","Daily Use", "Other"]
-    
+        "Book", "Stationery", "Furniture", "Electronic", "Clothes", "Daily Use", "Other"
+    ]
     
     var body: some View {
         NavigationView {
@@ -30,21 +30,14 @@ struct AddItemsView: View {
                     TextField("Contact", text: $contact)
                     TextField("Description", text: $description)
                     
-                    
                     Picker(
-                    selection: $category,
-                    label: HStack{
-                        Text ("Category:")
-                        Text(category)
-                    },
-                content: {
-                    ForEach (categories, id: \.self) { option in
-                        Text(option)
-                            .tag (option)
+                        selection: $categoryIndex,
+                        label: Text("Category:")
+                    ) {
+                        ForEach(categories.indices, id: \.self) { index in
+                            Text(categories[index])
+                        }
                     }
-                }
-                    )
-                    
                     
                     if let selectedImage = image {
                         Image(uiImage: selectedImage)
@@ -68,7 +61,6 @@ struct AddItemsView: View {
                         Text("Add Item")
                             .foregroundColor(.purple)
                             .fontWeight(.semibold)
-                            
                     }
                 }
             }
@@ -93,9 +85,9 @@ struct AddItemsView: View {
             // Handle invalid price input
             return
         }
-
         
-        let newItem = Product(name: name, image: image, price: price, contact: contact, description: description, category: category)
+        // Use the selected category index to access the category from the categories array
+        let newItem = Product(name: name, image: image, price: price, contact: contact, description: description, category: categories[categoryIndex])
         productList.append(newItem)
         
         presentationMode.wrappedValue.dismiss()
@@ -143,8 +135,6 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         presentationMode.wrappedValue.dismiss()
     }
 }
-
-
 
 
 

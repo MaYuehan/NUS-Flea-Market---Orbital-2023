@@ -10,6 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @State var userList: [User] = [
+        // ... existing user data ...
+    ]
    
     
     var body: some View {
@@ -59,7 +62,7 @@ struct SettingsView: View {
                     Spacer()
                     
                     NavigationLink("Log in",
-                                    destination: LoginPage())
+                                    destination: LoginPage(userList: $userList))
                     .font(.headline)
                     .foregroundColor(.purple)
                     .padding()
@@ -79,10 +82,14 @@ struct SettingsView: View {
 struct SignupPage: View{
     
     @Environment(\.presentationMode) var presentationMode
-    @State var name: String = ""
-    @State var selection: String = ""
-    @State var Email: String = ""
     
+    @State private var name: String = ""
+    @State private var age: String = ""
+    @State private var account: String = ""
+    
+    @State var userList: [User] = [
+        // ... existing user data ...
+    ]
     
     var body: some View{
        
@@ -96,6 +103,7 @@ struct SignupPage: View{
                         .frame(alignment: .leading)
                     
                     TextField("Your Name...", text: $name)
+                    
                         .padding()
                         .frame(width: 350)
                         .background(Color.purple.opacity(0.3) .cornerRadius (10))
@@ -109,7 +117,7 @@ struct SignupPage: View{
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                     
-                    TextField("Your Email...", text: $Email)
+                    TextField("Your Email...", text: $account)
                         .padding()
                         .frame(width: 350)
                         .background(Color.purple.opacity(0.3) .cornerRadius (10))
@@ -126,10 +134,10 @@ struct SignupPage: View{
                     
                     HStack{
                             
-                    Text(selection)
+                    Text(age)
                         
                         Picker(
-                        selection: $selection,
+                        selection: $age,
                         label: Text ("Picker"),
                     content: {
                         ForEach (15..<80) { number in
@@ -152,22 +160,37 @@ struct SignupPage: View{
                 
                 Spacer()
                 
-                Spacer()
-                
-                
                 if textAppropriate() {
+                    Button(action: {
+                        addInfo()
+                    }) {
+                        Text("Save my Info")
+                            .foregroundColor(.purple)
+                            .fontWeight(.semibold)
+                            .padding()
+                            .frame(width: 350)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(20)
+                    }
+                }
+                
+                
+               if textAppropriate() {
                     NavigationLink("Go to Login",
-                                   destination: LoginPage())
+                                   destination: LoginPage(userList: $userList))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
                     .frame(width: 350)
                     .background(Color.purple)
                     .cornerRadius(20)
+                   
+                   
                 }
                 
                 
-                    
+                
+                
                 
             }
             .navigationTitle(Text("Sign Up").foregroundColor(.purple))
@@ -181,23 +204,40 @@ struct SignupPage: View{
     }
     
     func textAppropriate() -> Bool {
-        if name.count >= 3 && Email.count >= 3 {
+        if name.count >= 3 && account.count >= 3 {
             return true
         }
         return false
     
+    }
+    
+    private func addInfo() {
+        
+        let newUser = User(name: name, account: account, age: age)
+        userList.append(newUser)
+        //presentationMode.wrappedValue.dismiss()
+
     }
         
     
 }
 
 
+
+
 struct LoginPage: View{
     
     @Environment(\.presentationMode) var presentationMode
-    @State var name: String = ""
-    @State var Email: String = ""
-   //@State var currentName: String?
+    @State private var names: String = ""
+    @State private var ages: String = ""
+    @State private var accounts: String = ""
+    @State private var buttonColor: Color = Color.purple
+    @State private var buttonText: String = "Enter"
+    @State private var textColor: Color = Color.white
+    
+    @State private var showAlert = false
+    @State private var showProfile = false
+    @Binding var userList: [User]
     
     var body: some View{
        
@@ -210,7 +250,7 @@ struct LoginPage: View{
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                     
-                    TextField("Your Name...", text: $name)
+                    TextField("Your Name...", text: $names)
                         .padding()
                         .frame(width: 350)
                         .background(Color.purple.opacity(0.3) .cornerRadius (10))
@@ -224,11 +264,22 @@ struct LoginPage: View{
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                     
-                    TextField("Your Email...", text: $Email)
+                    TextField("Your Email...", text: $accounts)
                         .padding()
                         .frame(width: 350)
                         .background(Color.purple.opacity(0.3) .cornerRadius (10))
-                    
+                }
+                
+                    VStack{
+                        Text("Age")
+                            .fontWeight(.semibold)
+                            .frame(alignment: .leading)
+                        
+                        TextField("Your Age...", text: $ages)
+                            .padding()
+                            .frame(width: 350)
+                            .background(Color.purple.opacity(0.3) .cornerRadius (10))
+                        
                 }
             
                 
@@ -236,60 +287,65 @@ struct LoginPage: View{
                 Spacer()
                 Spacer()
                 
-                Button(action:{
-                    if textAppropriate() {
-//                        UserDefaults.standard.set(name, forKey: "Name")
-//                        UserDefaults.standard.set(Email, forKey: "Email")
-                    }
-                    
-                }, label: {
-                    Text("Save my Info")
-                        .font(.headline)
-                        .foregroundColor(.purple)
-                        .padding()
-                        .frame(width: 350)
-                        .background(Color.purple.opacity(0.1))
-                        .cornerRadius(20)
-                })
-                .onAppear{
-//                    name = UserDefaults.standard.string(forKey: "Name")
-//                    Email = UserDefaults.standard.string(forKey: "Email")
-                }
                 
                 Button(action:{
-                    if textAppropriate() {
-                        saveText()
+                    if exitUser.isEmpty {
+//                        buttonText = "Account does not exist"
+//                        textColor = Color.red
+//                        buttonColor = Color.gray.opacity(0.3)
+                        showAlert = true
+                        
+                    }else{
+                        showProfile = true
+                        presentationMode.wrappedValue.dismiss()
                     }
                     
                 }, label: {
-                    Text("Enter")
+                    Text(buttonText)
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(textColor)
                         .padding()
                         .frame(width: 350)
-                        .background(Color.purple)
+                        .background(buttonColor)
                         .cornerRadius(20)
+                }).alert(isPresented: $showAlert, content: {
+                    Alert(title: Text("Account does not exist"))
                 })
                     
                 
             }
             .navigationTitle(Text("Login").foregroundColor(.purple))
             .accentColor(Color.purple)
+            .sheet(isPresented: $showProfile) {
+                // Pass the productList and cartManager to the SearchView
+                Profile(names:$names, accounts:$accounts, ages:$ages)
+                    
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
             
         }
         
     }
     
     func textAppropriate() -> Bool {
-        if name.count >= 3 && Email.count >= 3 {
+        if names.count >= 3 && accounts.count >= 3 {
             return true
         }
         return false
     
     }
     
-    func saveText() {
-        
+  
+    
+    
+    private var exitUser: [User] {
+     
+        return userList.filter { user in
+            let matchName = user.name == names
+            let matchAccount = user.account == accounts
+            let matchAge = user.age == ages
+            return matchName && matchAccount && matchAge
+        }
     }
         
     

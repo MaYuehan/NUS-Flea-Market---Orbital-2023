@@ -8,156 +8,48 @@
 import SwiftUI
 
 struct SearchView: View {
-    
-    @State var keyword: String = ""
-    
+    @Binding var productList: [Product]
+    @EnvironmentObject var cartManager: CartManager
+
+    @State private var selectedSortOption: String = "All"
+    @State private var searchText: String = ""
+
+    private let categories = ["All", "Book", "Stationery", "Furniture", "Electronic", "Clothes", "Daily Use", "Other"]
+
     var body: some View {
-        
-        ZStack{
-            
-            //cards
-            VStack {
-                Color.white.frame(height: 100)
-            
-                ScrollView{
-                    
-                    NavigationLink{
-                             CategoryBooks()
-                    }label:{
-                        Text("Books")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                    
-                    
-                    NavigationLink{
-                             CategoryStationery()
-                    }label:{
-                        Text("Stationeries")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                    
-                    
-                    NavigationLink{
-                             CategoryFurnitures()
-                    }label:{
-                        Text("Furnitures")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
+        VStack {
+            SearchBar(searchText: $searchText)
 
-                   
-                    
-                    NavigationLink{
-                             CategoryElectrical()
-                    }label:{
-                        Text("Electronics")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                    
-                    
-                    NavigationLink{
-                             CategoryClothes()
-                    }label:{
-                        Text("Clothes")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                   
-                    NavigationLink{
-                             CategoryDailyUse()
-                    }label:{
-                        Text("Daily use")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                   
-                    
-                    
-                    NavigationLink{
-                             CategoryOther()
-                    }label:{
-                        Text("Other")
-                            .fontWeight(.semibold)
-                            .foregroundColor(.white)
-                            .frame(width: 350, height: 100)
-                            .background(Color.purple)
-                            .cornerRadius(20)
-                    }
-                    .padding()
-                
-                    
+            Picker("Sort by", selection: $selectedSortOption) {
+                ForEach(categories, id: \.self) { category in
+                    Text(category)
+                        .tag(category)
                 }
-                  
-              }
-            
-            //search bar
-            VStack {
-                ZStack {
-                    Color.white.frame(height: 100)
-                    HStack {
-                        
-                        TextField("What are you looking for?", text: $keyword)
-                            .padding()
-                            .frame(height:50)
-                            .background(Color.purple.opacity(0.3)
-                                .cornerRadius (10))
-                            .padding()
-                        
-                        
-                        Button {
-                           //action
-                        } label: {
-                            Image(systemName: "magnifyingglass.circle.fill")
-                                .resizable()
-                                .foregroundColor(.purple)
-                                .frame(width: 35, height: 35)
-                                .padding()
-                        }
-                    }
-                }
-                
-                Spacer()
-                
             }
-            
-            
-          
-            
-        }
-        
-        
-    }
-}
+            .pickerStyle(MenuPickerStyle())
+            .padding()
 
-struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
+            List {
+                ForEach(filteredProducts) { product in
+                    Card(product: product)
+                        .environmentObject(cartManager)
+                }
+            }
+        }
+        .navigationTitle(Text("Search"))
+    }
+
+    private var filteredProducts: [Product] {
+        let lowercasedSearchText = searchText.lowercased()
+
+        return productList.filter { product in
+            let isInSelectedCategory = selectedSortOption == "All" || product.category == selectedSortOption
+            let matchesSearchText = searchText.isEmpty ||
+                product.name.lowercased().contains(lowercasedSearchText) ||
+                product.description.lowercased().contains(lowercasedSearchText) ||
+                product.contact.lowercased().contains(lowercasedSearchText)
+            
+            return isInSelectedCategory && matchesSearchText
+        }
     }
 }
