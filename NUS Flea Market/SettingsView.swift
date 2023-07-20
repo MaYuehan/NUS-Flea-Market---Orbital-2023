@@ -20,6 +20,7 @@ struct SettingsView: View {
     //@State private var showSheet = true
     
     @State private var checkSP = false
+    @Binding var showSettingsView:Bool
  
     
     var body: some View {
@@ -59,7 +60,7 @@ struct SettingsView: View {
                                                 .cornerRadius(20)
                                         }).sheet(isPresented: $showSP) {
                     
-                                            SignupPage(showSP:$showSP)
+                                            SignupPage(showSP:$showSP, showSettingsView:$showSettingsView)
                     
                                         }
                                         .navigationViewStyle(StackNavigationViewStyle())
@@ -82,7 +83,7 @@ struct SettingsView: View {
                     Spacer()
                     
                     NavigationLink("Log in",
-                                    destination: LoginPage(userList: $userList,showSP:$showSP))
+                                    destination: LoginPage(userList: $userList,showSP:$showSP, showSettingsView:$showSettingsView))
                     .font(.headline)
                     .foregroundColor(.purple)
                     .padding()
@@ -138,6 +139,7 @@ struct SignupPage: View{
     
     
     @Binding var showSP: Bool
+    @Binding var showSettingsView:Bool
     
     var body: some View{
        
@@ -226,7 +228,7 @@ struct SignupPage: View{
                 
                if textAppropriate() {
                     NavigationLink("Go to Login",
-                                   destination: LoginPage(userList: $userList, showSP:$showSP))
+                                   destination: LoginPage(userList: $userList, showSP:$showSP, showSettingsView:$showSettingsView))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
@@ -303,6 +305,7 @@ struct LoginPage: View{
     @Binding var userList: [User]
     
     @Binding var showSP: Bool
+    @Binding var showSettingsView:Bool
     
     var body: some View{
        
@@ -383,7 +386,7 @@ struct LoginPage: View{
             .accentColor(Color.purple)
             .sheet(isPresented: $showProfile) {
                 // Pass the productList and cartManager to the SearchView
-                Profile(names:$names, accounts:$accounts, ages:$ages, showSP: $showSP)
+                Profile(names:$names, accounts:$accounts, ages:$ages, showSP: $showSP,showSettingsView:$showSettingsView)
                     
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -417,11 +420,11 @@ struct LoginPage: View{
 }
 
     
-    struct SettingsView_Previews: PreviewProvider {
-        static var previews: some View {
-            SettingsView()
-            //SignupPage()
-            //LoginPage()
-            
-        }
-    }
+//    struct SettingsView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            SettingsView(showSettingsView:$showSettingsView)
+//            //SignupPage()
+//            //LoginPage()
+//            
+//        }
+//    }

@@ -15,6 +15,7 @@ struct Profile: View {
     @Binding var accounts: String
     @Binding var ages: String
     @Binding var showSP: Bool
+    @Binding var showSettingsView: Bool
     
     var body: some View {
         ZStack{
@@ -26,7 +27,7 @@ struct Profile: View {
                     Image(uiImage: selectedImage)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .cornerRadius(180)
+                        .cornerRadius(200)
                         .frame(width: 180,height:180)
                 } else{
                     Color.purple
@@ -68,7 +69,9 @@ struct Profile: View {
             
             Button(action: {
                 showSP = false
-                SettingsView().presentationMode.wrappedValue.dismiss()
+                showSettingsView = false
+                
+                //SettingsView().presentationMode.wrappedValue.dismiss()
                 
                 
                 

@@ -15,8 +15,9 @@ struct ContentView: View {
     @State private var showSettingsView = false
     @State private var showSearchView = false // New state variable for the SearchView
     @State private var showProfileView = false
+    @State private var registered = false
 
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -41,16 +42,6 @@ struct ContentView: View {
                     }
                 }
                 
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(action: {
-//                        showProfileView = true
-//                    }) {
-//                        Image(systemName: "person")
-//                            .foregroundColor(.purple)
-//                            .padding()
-//                            .frame(width: 60, height: 60)
-//                    }
-//                }
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     // Navigate to SearchView when the magnifying glass is tapped
@@ -96,11 +87,8 @@ struct ContentView: View {
             )
         }
         .sheet(isPresented: $showSettingsView) {
-            SettingsView()
+            SettingsView(showSettingsView:$showSettingsView)
         }
-//        .sheet(isPresented: $showProfileView) {
-//            Profile()
-//        }
         .sheet(isPresented: $showSearchView) {
             // Pass the productList and cartManager to the SearchView
             SearchView(productList: $productList)
