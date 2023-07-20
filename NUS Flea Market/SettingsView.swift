@@ -13,10 +13,18 @@ struct SettingsView: View {
     @State var userList: [User] = [
         // ... existing user data ...
     ]
-   
+    
+    @State private var showSP = false
+    @State private var showLI = false
+    
+    //@State private var showSheet = true
+    
+    @State private var checkSP = false
+ 
     
     var body: some View {
         NavigationView{
+           
             ZStack{
                 Color.purple.ignoresSafeArea()
                 
@@ -35,48 +43,82 @@ struct SettingsView: View {
                         .multilineTextAlignment(.leading)
                         .bold()
                     
-                    //                Button(action:{
-                    //
-                    //                }, label: {
-//                                        Text("Sign up")
-//                                            .font(.headline)
-//                                            .foregroundColor(.purple)
-//                                            .padding()
-//                                            .background(Color.white)
-//                                            .cornerRadius(20)
-                    //                })
+                                        Button(action:{
+                                            //showSheet = true
+                                            showSP = true
+                                            //presentationMode.wrappedValue.dismiss()
+                                            //checkSP = showSheet==true && showSP == true
+                                            
                     
-                    NavigationLink("Sign Up",
-                                    destination: SignupPage())
-                    .font(.headline)
-                    .foregroundColor(.purple)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(20)
+                                        }, label: {
+                                            Text("Sign Up")
+                                                .font(.headline)
+                                                .foregroundColor(.purple)
+                                                .padding()
+                                                .background(Color.white)
+                                                .cornerRadius(20)
+                                        }).sheet(isPresented: $showSP) {
                     
+                                            SignupPage(showSP:$showSP)
+                    
+                                        }
+                                        .navigationViewStyle(StackNavigationViewStyle())
+                                        
+                    
+                    
+//                    NavigationLink("Sign Up",
+//                                   destination: SignupPage(showSheet:$showSheet))
+//                    .font(.headline)
+//                    .foregroundColor(.purple)
+//                    .padding()
+//                    .background(Color.white)
+//                    .cornerRadius(20)
                     
                 }
+                
                 
                 
                 VStack{
                     Spacer()
                     
                     NavigationLink("Log in",
-                                    destination: LoginPage(userList: $userList))
+                                    destination: LoginPage(userList: $userList,showSP:$showSP))
                     .font(.headline)
                     .foregroundColor(.purple)
                     .padding()
                     .frame(width: 300)
                     .background(Color.white)
                     .cornerRadius(20)
+                    
+                    
+//                    Button(action:{
+//                        showLI = true
+//                        //presentationMode.wrappedValue.dismiss()
+//
+//                    }, label: {
+//                        Text("Log in")
+//                            .font(.headline)
+//                            .foregroundColor(.purple)
+//                            .padding()
+//                            .frame(width: 300)
+//                            .background(Color.white)
+//                            .cornerRadius(20)
+//                    }).sheet(isPresented: $showLI) {
+//
+//                        LoginPage(userList: $userList)
+//
+//                    }
+//                    .navigationViewStyle(StackNavigationViewStyle())
+//
                 }
+                
             }
-            
+        }
+        
             
         }
         
     }
-}
 
 
 struct SignupPage: View{
@@ -87,9 +129,15 @@ struct SignupPage: View{
     @State private var age: String = ""
     @State private var account: String = ""
     
+    @State private var buttonText = "Register"
+    
+    @State private var showLogin = false
     @State var userList: [User] = [
         // ... existing user data ...
     ]
+    
+    
+    @Binding var showSP: Bool
     
     var body: some View{
        
@@ -163,8 +211,9 @@ struct SignupPage: View{
                 if textAppropriate() {
                     Button(action: {
                         addInfo()
+                        buttonText = "Registered!"
                     }) {
-                        Text("Save my Info")
+                        Text(buttonText)
                             .foregroundColor(.purple)
                             .fontWeight(.semibold)
                             .padding()
@@ -177,7 +226,7 @@ struct SignupPage: View{
                 
                if textAppropriate() {
                     NavigationLink("Go to Login",
-                                   destination: LoginPage(userList: $userList))
+                                   destination: LoginPage(userList: $userList, showSP:$showSP))
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
@@ -185,10 +234,26 @@ struct SignupPage: View{
                     .background(Color.purple)
                     .cornerRadius(20)
                    
+//                   Button(action:{
+//                       showLogin = true
+//                       //presentationMode.wrappedValue.dismiss()
+//
+//                   }, label: {
+//                           Text("Go to Login")
+//                           .font(.headline)
+//                           .foregroundColor(.white)
+//                           .padding()
+//                           .frame(width: 350)
+//                           .background(Color.purple)
+//                           .cornerRadius(20)
+//                   }).sheet(isPresented: $showLogin) {
+//                       // Pass the productList and cartManager to the SearchView
+//                       LoginPage(userList: $userList)
+//
+//                   }
+//                   .navigationViewStyle(StackNavigationViewStyle())
                    
                 }
-                
-                
                 
                 
                 
@@ -223,8 +288,6 @@ struct SignupPage: View{
 }
 
 
-
-
 struct LoginPage: View{
     
     @Environment(\.presentationMode) var presentationMode
@@ -238,6 +301,8 @@ struct LoginPage: View{
     @State private var showAlert = false
     @State private var showProfile = false
     @Binding var userList: [User]
+    
+    @Binding var showSP: Bool
     
     var body: some View{
        
@@ -297,7 +362,7 @@ struct LoginPage: View{
                         
                     }else{
                         showProfile = true
-                        presentationMode.wrappedValue.dismiss()
+                        //presentationMode.wrappedValue.dismiss()
                     }
                     
                 }, label: {
@@ -318,7 +383,7 @@ struct LoginPage: View{
             .accentColor(Color.purple)
             .sheet(isPresented: $showProfile) {
                 // Pass the productList and cartManager to the SearchView
-                Profile(names:$names, accounts:$accounts, ages:$ages)
+                Profile(names:$names, accounts:$accounts, ages:$ages, showSP: $showSP)
                     
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -346,14 +411,11 @@ struct LoginPage: View{
             let matchAge = user.age == ages
             return matchName && matchAccount && matchAge
         }
-    }
         
+    }
     
 }
 
-
-
-    
     
     struct SettingsView_Previews: PreviewProvider {
         static var previews: some View {

@@ -14,50 +14,78 @@ struct Profile: View {
     @Binding var names: String
     @Binding var accounts: String
     @Binding var ages: String
+    @Binding var showSP: Bool
     
     var body: some View {
-        VStack{
-           
-            
-            
-            if let selectedImage = image {
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(180)
-                    .frame(width: 180,height:180)
-            } else{
-                Color.purple
-                    .cornerRadius(180)
-                    .frame(width: 180,height:180)
-            }
-            
-            
-            Button(action: {
-                showImagePicker = true
-            }) {
-                Text("Change photo")
-                    .foregroundColor(.gray)
+        ZStack{
+            VStack{
+                
+                
+                
+                if let selectedImage = image {
+                    Image(uiImage: selectedImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(180)
+                        .frame(width: 180,height:180)
+                } else{
+                    Color.purple
+                        .cornerRadius(180)
+                        .frame(width: 180,height:180)
+                }
+                
+                
+                Button(action: {
+                    showImagePicker = true
+                }) {
+                    Text("Change photo")
+                        .foregroundColor(.gray)
+                    
+                }
+                
+                
+                
+                Text(names)
+                    .fontWeight(.bold)
+                    .font(.title)
+                
+                Text(accounts)
+                    .fontWeight(.semibold)
+                    .font(.title3)
+                    .foregroundColor(.purple)
+                
+                
                 
             }
-            
-         
-            
-            Text(names)
-                .fontWeight(.bold)
-                .font(.title)
-            
-            Text(accounts)
-                .fontWeight(.semibold)
-                .font(.title3)
-                .foregroundColor(.purple)
-            
-          
+            .sheet(isPresented: $showImagePicker) {
+                ImagePicker(image: $image)
+            }
             
         }
-        .sheet(isPresented: $showImagePicker) {
-        ImagePicker(image: $image)
-    }
+        
+        VStack{
+            Spacer()
+            
+            Button(action: {
+                showSP = false
+                SettingsView().presentationMode.wrappedValue.dismiss()
+                
+                
+                
+            }) {
+                Text("Done")
+                    .foregroundColor(.purple)
+                    .fontWeight(.semibold)
+                    .padding()
+                    .frame(width: 350)
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(20)
+            }
+        }
+        
+        
+        
+        
         
     }
         
