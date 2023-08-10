@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10199BDF2A84D9F5000DCD02 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10199BDE2A84D9F5000DCD02 /* SearchBar.swift */; };
 		10CD75A12A56E13100ACB14C /* itemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A02A56E13100ACB14C /* itemDetail.swift */; };
 		10CD75A52A56F65D00ACB14C /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A42A56F65D00ACB14C /* Trail.swift */; };
 		10CD75A72A5708ED00ACB14C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75A62A5708ED00ACB14C /* SearchView.swift */; };
-		10CD75B92A6910A900ACB14C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75B82A6910A900ACB14C /* SearchBar.swift */; };
 		10CD75BB2A691B0700ACB14C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75BA2A691B0700ACB14C /* Profile.swift */; };
 		10CD75BD2A69223C00ACB14C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CD75BC2A69223C00ACB14C /* User.swift */; };
 		10D35C1A2A48AAD90038D73A /* NUS_Flea_MarketApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D35C192A48AAD90038D73A /* NUS_Flea_MarketApp.swift */; };
@@ -28,10 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10199BDE2A84D9F5000DCD02 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		10CD75A02A56E13100ACB14C /* itemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itemDetail.swift; sourceTree = "<group>"; };
 		10CD75A42A56F65D00ACB14C /* Trail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		10CD75A62A5708ED00ACB14C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		10CD75B82A6910A900ACB14C /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchBar.swift; path = "../../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/d3a877584183fd0a285c42be8c8c9522/Message/MessageTemp/adc6d616bb5c0b7219079c8cd68a5250/File/SearchBar.swift"; sourceTree = "<group>"; };
 		10CD75BA2A691B0700ACB14C /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		10CD75BC2A69223C00ACB14C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		10D35C162A48AAD90038D73A /* NUS Flea Market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NUS Flea Market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,7 +93,7 @@
 				10D35C352A48ACDB0038D73A /* CartManager.swift */,
 				10D35C2D2A48AC6E0038D73A /* ProductRow.swift */,
 				10CD75A62A5708ED00ACB14C /* SearchView.swift */,
-				10CD75B82A6910A900ACB14C /* SearchBar.swift */,
+				10199BDE2A84D9F5000DCD02 /* SearchBar.swift */,
 				10CD75A42A56F65D00ACB14C /* Trail.swift */,
 				10D35C1D2A48AADF0038D73A /* Assets.xcassets */,
 				10D35C1F2A48AADF0038D73A /* Preview Content */,
@@ -184,11 +184,11 @@
 				10D35C362A48ACDB0038D73A /* CartManager.swift in Sources */,
 				10D35C302A48AC8B0038D73A /* Card.swift in Sources */,
 				10CD75BD2A69223C00ACB14C /* User.swift in Sources */,
+				10199BDF2A84D9F5000DCD02 /* SearchBar.swift in Sources */,
 				10D35C1C2A48AAD90038D73A /* ContentView.swift in Sources */,
 				10CD75A52A56F65D00ACB14C /* Trail.swift in Sources */,
 				10D35C2E2A48AC6E0038D73A /* ProductRow.swift in Sources */,
 				10CD75A12A56E13100ACB14C /* itemDetail.swift in Sources */,
-				10CD75B92A6910A900ACB14C /* SearchBar.swift in Sources */,
 				10D35C1A2A48AAD90038D73A /* NUS_Flea_MarketApp.swift in Sources */,
 				10D35C322A48ACA30038D73A /* CartButton.swift in Sources */,
 				10D35C382A48ACF00038D73A /* Product.swift in Sources */,

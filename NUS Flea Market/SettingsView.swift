@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  NUS Flea Market
-//
-//  Created by Yuehan Ma on 10/6/2023.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -176,33 +169,44 @@ struct SignupPage: View{
                 Spacer()
             
                 
-                
                 VStack{
-                    Text("Age")
+                    Text("Password")
                         .fontWeight(.semibold)
                         .frame(alignment: .leading)
                     
-                    HStack{
-                            
-                    Text(age)
-                        
-                        Picker(
-                        selection: $age,
-                        label: Text ("Picker"),
-                    content: {
-                        ForEach (15..<80) { number in
-                            Text("\(number)" )
-                                .tag ("\(number)")
-                        }
-                    }
-                        )
-                        
-                        
-                    }
-                    .frame(width:350)
-                    .background(Color.purple.opacity(0.3)
-                        .cornerRadius (10))
+                    TextField("Set your Password...", text: $age)
+                    
+                        .padding()
+                        .frame(width: 350)
+                        .background(Color.purple.opacity(0.3) .cornerRadius (10))
                 }
+                
+//                VStack{
+//                    Text("Age")
+//                        .fontWeight(.semibold)
+//                        .frame(alignment: .leading)
+//
+//                    HStack{
+//
+//                    Text(age)
+//
+//                        Picker(
+//                        selection: $age,
+//                        label: Text ("Picker"),
+//                    content: {
+//                        ForEach (15..<80) { number in
+//                            Text("\(number)" )
+//                                .tag ("\(number)")
+//                        }
+//                    }
+//                        )
+//
+//
+//                    }
+//                    .frame(width:350)
+//                    .background(Color.purple.opacity(0.3)
+//                        .cornerRadius (10))
+//                }
                 
                 
                 
@@ -271,7 +275,7 @@ struct SignupPage: View{
     }
     
     func textAppropriate() -> Bool {
-        if name.count >= 3 && account.count >= 3 {
+        if name.count >= 3 && account.count >= 3 && age.count >= 6 {
             return true
         }
         return false
@@ -339,11 +343,11 @@ struct LoginPage: View{
                 }
                 
                     VStack{
-                        Text("Age")
+                        Text("Password")
                             .fontWeight(.semibold)
                             .frame(alignment: .leading)
                         
-                        TextField("Your Age...", text: $ages)
+                        TextField("Your Password...", text: $ages)
                             .padding()
                             .frame(width: 350)
                             .background(Color.purple.opacity(0.3) .cornerRadius (10))
@@ -425,6 +429,6 @@ struct LoginPage: View{
 //            SettingsView(showSettingsView:$showSettingsView)
 //            //SignupPage()
 //            //LoginPage()
-//            
+//
 //        }
 //    }
